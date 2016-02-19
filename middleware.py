@@ -40,7 +40,7 @@ class AuthenticationMiddleware(object):
     @staticmethod
     def is_public_endpoint(request):
         return all([request.path in config.PUBLIC_ENDPOINTS,
-                    request.method == config.PUBLIC_ENDPOINTS.get(request.path)])
+                    request.method in config.PUBLIC_ENDPOINTS.get(request.path)])
 
     def validate_public_endpoint(self, request):
         if self.is_public_endpoint(request) or request.headers.get('AUTHORIZATION'):
