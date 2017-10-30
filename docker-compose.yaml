@@ -1,0 +1,16 @@
+version: "3"
+services:
+  messenger:
+    image: imauld/messenger:app-0.1.0
+    ports:
+      - "8080:8080"
+    command: "/venv/bin/gunicorn -c app/config.py app.server:app"
+    links:
+      - db
+  db:
+    image: postgres:10
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
+

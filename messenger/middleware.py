@@ -1,10 +1,14 @@
 from base64 import b64decode
 from hashlib import sha256
+import logging
 
 import falcon
 
 import config
 from models import User, session
+
+
+logger = logging.getLogger(__name__)
 
 
 class AuthenticationMiddleware(object):
@@ -13,7 +17,8 @@ class AuthenticationMiddleware(object):
     """
     def process_request(self, request, response):
         try:
-            self.validate_public_endpoint(request)
+            if self.validate_public_endpoint(request):
+                return
             auth_header = request.headers.get('AUTHORIZATION')
             username, password = self.decode_auth_header(auth_header)
             self.validate_user(username, password)
@@ -40,11 +45,11 @@ class AuthenticationMiddleware(object):
     @staticmethod
     def is_public_endpoint(request):
         return all([request.path in config.PUBLIC_ENDPOINTS,
-                    request.method == config.PUBLIC_ENDPOINTS.get(request.path)])
+                    request.method in config.PUBLIC_ENDPOINTS.get(request.path)])
 
     def validate_public_endpoint(self, request):
         if self.is_public_endpoint(request) or request.headers.get('AUTHORIZATION'):
-            return
+            return True
         else:
             raise falcon.HTTPUnauthorized(
                 'Unauthorized',

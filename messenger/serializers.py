@@ -93,43 +93,46 @@ class ModelSerializer(object):
             if key in self.fields:
                 setattr(self.model, key, val)
 
-"""
-{
+
+s = {
   "links": {
     "self": "http://example.com/articles",
     "next": "http://example.com/articles?page[offset]=2",
     "last": "http://example.com/articles?page[offset]=10"
   },
-  "data": [{
-    "type": "articles",
-    "id": "1",
-    "attributes": {
-      "title": "JSON API paints my bikeshed!"
-    },
-    "relationships": {
-      "author": {
-        "links": {
-          "self": "http://example.com/articles/1/relationships/author",
-          "related": "http://example.com/articles/1/author"
+  "data": [
+      {
+        "type": "articles",
+        "id": "1",
+        "attributes": {
+          "title": "JSON API paints my bikeshed!"
         },
-        "data": { "type": "people", "id": "9" }
-      },
-      "comments": {
-        "links": {
-          "self": "http://example.com/articles/1/relationships/comments",
-          "related": "http://example.com/articles/1/comments"
+        "relationships": {
+          "author": {
+            "links": {
+              "self": "http://example.com/articles/1/relationships/author",
+              "related": "http://example.com/articles/1/author"
+            },
+            "data": { "type": "people", "id": "9" }
+          },
+          "comments": {
+            "links": {
+              "self": "http://example.com/articles/1/relationships/comments",
+              "related": "http://example.com/articles/1/comments"
+            },
+            "data": [
+              { "type": "comments", "id": "5" },
+              { "type": "comments", "id": "12" }
+            ]
+          }
         },
-        "data": [
-          { "type": "comments", "id": "5" },
-          { "type": "comments", "id": "12" }
-        ]
-      }
-    },
-    "links": {
-      "self": "http://example.com/articles/1"
-    }
-  }],
-  "included": [{
+        "links": {
+          "self": "http://example.com/articles/1"
+        }
+  }
+  ],
+  "included": [
+    {
     "type": "people",
     "id": "9",
     "attributes": {
@@ -170,4 +173,4 @@ class ModelSerializer(object):
     }
   }]
 }
-"""
+
