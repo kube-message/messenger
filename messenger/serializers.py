@@ -22,7 +22,7 @@ class ModelSerializer(object):
             "links": {
                 "self": "http://example.com/{}/{}".format(
                     self.get_type_name(self.model),
-                    self.model.id
+                    self.model.pk
                 ),
             },
             "data": self.serialize_model_object(),
@@ -37,7 +37,7 @@ class ModelSerializer(object):
         """
         return {
             'type': self.get_type_name(self.model),
-            'id': self.model.id,
+            'id': self.model.pk,
             'attributes': self.get_attributes()
         }
 
@@ -69,7 +69,7 @@ class ModelSerializer(object):
     def build_links(self):
         return config.DOMAIN + '/{}/{}'.format(
             self.get_type_name(self.model),
-            self.model.id
+            self.model.pk
         )
 
     def get_relationships(self):
