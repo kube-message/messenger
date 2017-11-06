@@ -20,13 +20,12 @@ class ModelSerializer(object):
         """
         return {
             "links": {
-                "self": "http://example.com/{}/{}".format(
-                    self.get_type_name(self.model),
+                "self": "/{}/{}".format(
+                    self.get_type_name(self.model, plural=True),
                     self.model.pk
                 ),
             },
             "data": self.serialize_model_object(),
-            "relationships": self.get_relationships()
         }
 
     def serialize_model_object(self):
@@ -42,7 +41,7 @@ class ModelSerializer(object):
         }
 
     @staticmethod
-    def get_type_name(model_obj):
+    def get_type_name(model_obj, plural=False):
         """
         Gets the class name of an object and return the JSON API spec compliant type name.
 
@@ -52,7 +51,10 @@ class ModelSerializer(object):
         Returns:
             (str)
         """
-        return model_obj.__class__.__name__.lower() + 's'
+        type_name = model_obj.__class__.__name__.lower()
+        if plural:
+            type_name += "s"
+        return type_name
 
     def get_attributes(self):
         """
@@ -63,12 +65,12 @@ class ModelSerializer(object):
             (dict)
         """
         return {
-            attr: getattr(self.model, attr) for attr in dir(self.model) if attr in self.fields
+            attr: getattr(self.model, attr, None) for attr in dir(self.model) if attr in self.fields
         }
 
     def build_links(self):
         return config.DOMAIN + '/{}/{}'.format(
-            self.get_type_name(self.model),
+            self.get_type_name(self.model, plural=True),
             self.model.pk
         )
 
@@ -92,85 +94,3 @@ class ModelSerializer(object):
         for key, val in data.items():
             if key in self.fields:
                 setattr(self.model, key, val)
-
-
-s = {
-  "links": {
-    "self": "http://example.com/articles",
-    "next": "http://example.com/articles?page[offset]=2",
-    "last": "http://example.com/articles?page[offset]=10"
-  },
-  "data": [
-      {
-        "type": "articles",
-        "id": "1",
-        "attributes": {
-          "title": "JSON API paints my bikeshed!"
-        },
-        "relationships": {
-          "author": {
-            "links": {
-              "self": "http://example.com/articles/1/relationships/author",
-              "related": "http://example.com/articles/1/author"
-            },
-            "data": { "type": "people", "id": "9" }
-          },
-          "comments": {
-            "links": {
-              "self": "http://example.com/articles/1/relationships/comments",
-              "related": "http://example.com/articles/1/comments"
-            },
-            "data": [
-              { "type": "comments", "id": "5" },
-              { "type": "comments", "id": "12" }
-            ]
-          }
-        },
-        "links": {
-          "self": "http://example.com/articles/1"
-        }
-  }
-  ],
-  "included": [
-    {
-    "type": "people",
-    "id": "9",
-    "attributes": {
-      "first-name": "Dan",
-      "last-name": "Gebhardt",
-      "twitter": "dgeb"
-    },
-    "links": {
-      "self": "http://example.com/people/9"
-    }
-  }, {
-    "type": "comments",
-    "id": "5",
-    "attributes": {
-      "body": "First!"
-    },
-    "relationships": {
-      "author": {
-        "data": { "type": "people", "id": "2" }
-      }
-    },
-    "links": {
-      "self": "http://example.com/comments/5"
-    }
-  }, {
-    "type": "comments",
-    "id": "12",
-    "attributes": {
-      "body": "I like XML better"
-    },
-    "relationships": {
-      "author": {
-        "data": { "type": "people", "id": "9" }
-      }
-    },
-    "links": {
-      "self": "http://example.com/comments/12"
-    }
-  }]
-}
-

@@ -1,7 +1,7 @@
 import falcon
 import json
 
-from models import Thread, Message, session
+from services import messages, threads
 from serializers import ModelSerializer
 
 
@@ -14,70 +14,54 @@ class HealthCheckResource(object):
 
 class ThreadListResource(object):
     @staticmethod
-    def on_get(request, response):
-        thread_objects = session.query(Thread).filter(
-            Thread.participants.any(int(request.params.get("sender_id")))
-        ).all()
-        thread_dict = {t.pk: t.participants for t in thread_objects}
-        response.data = json.dumps(thread_dict)
-        response.status = falcon.HTTP_200
-
-    @staticmethod
     def on_post(request, response):
         data = json.loads(request.stream.read())
-        thread = Thread(participants=data.get("participants"))
-        session.add(thread)
-        session.commit()
-        response.data = json.dumps({
-            "threadId": thread.pk,
-            "participants": thread.participants
-        })
+        participants = data.get("participants")
+        if not participants:
+            response.status = falcon.HTTP_BAD_REQUEST
+            response.data = json.dumps({"error": "particiapnts is a required field."})
+            return
+        thread = threads.create_thread(participants)
+        response.data = json.dumps(ModelSerializer(thread, ["pk", "participants"]).build_response())
         response.status = falcon.HTTP_202
 
 
 class ThreadMessageListResource(object):
     @staticmethod
     def on_get(request, response, thread_id):
-        messages = session.query(Message).filter(Message.thread_id == thread_id)
-        response.data = json.dumps({m.pk: m.text for m in messages})
+        message_objects = messages.get_messages_for_thread(thread_id)
+        response.data = json.dumps({m.pk: m.text for m in message_objects})
+        response.status = falcon.HTTP_200
+
+
+class ThreadUserListResource(object):
+    @staticmethod
+    def on_get(request, response, user_id):
+        user_threads = threads.get_threads_for_user(user_id)
+        response.data = json.dumps([ModelSerializer(t, ["pk", "particiapnts"]).build_response() for t in user_threads])
         response.status = falcon.HTTP_200
 
 
 class MessageListResource(object):
     @staticmethod
-    def on_get(request, response):
-        """
-        Handle GET requests for message objects.
-        Args:
-            request: Falcon request object
-            response: Falcon response object
-
-        Returns:
-            (response)
-        """
-        response.status = falcon.HTTP_200
-        messages = session.query(Message).all()
-        response.data = json.dumps({
-            "links": {
-                "self": "http://example.com/messages",
-            },
-            "data": [
-                ModelSerializer(
-                    message, ['text', 'sender_id', 'recipient_id']
-                ).build_response()
-                for message in messages
-            ],
-        })
-
-    @staticmethod
     def on_post(request, response):
         data = json.loads(request.stream.read())
-        message = Message(**data)
-        session.add(message)
-        session.commit()
-        response.status = falcon.HTTP_201
-        serializer = ModelSerializer(message, ['text', 'sender_id', 'recipient_id'])
-        response.data = json.dumps(serializer.build_response())
+        try:
+            thread_id, sender_id, text = data["thread_id"], data["sender_id"], data["text"]
+        except KeyError as err:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: %s" % err})
+            return
+
+        if threads.is_user_in_thread(sender_id, thread_id):
+            message = messages.send_message(thread_id, sender_id, text)
+            response.status = falcon.HTTP_201
+            serializer = ModelSerializer(message, ['text', 'thread_id'])
+            response.data = json.dumps(serializer.build_response())
+        else:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: sender not in thread"})
+            return
 
 
 class MessageDetailResource(object):
@@ -93,9 +77,9 @@ class MessageDetailResource(object):
         Returns:
             (response)
         """
-        message = session.query(Message).get(message_id)
+        message = messages.get_message_by_id(message_id)
         if message is None:
             response.status = falcon.HTTP_404
         else:
-            serializer = ModelSerializer(message, ['text', 'sender_id', 'recipient_id'])
+            serializer = ModelSerializer(message, ['text', 'sender_id', 'thread_id'])
             response.data = json.dumps(serializer.build_response())

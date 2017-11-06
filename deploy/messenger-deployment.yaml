@@ -1,0 +1,50 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  labels:
+    app: messenger
+  name: messenger
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: messenger
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: messenger
+    spec:
+      containers:
+      - name: messenger
+        image: imauld/messenger:app-0.1.0
+        imagePullPolicy: IfNotPresent
+        command: 
+          - "/venv/bin/gunicorn"
+        args:
+          - "-c /messenger/config.py messenger.server:app"
+        ports:
+          - containerPort: 8080
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: messenger
+spec:
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: messenger
+  type: NodePort

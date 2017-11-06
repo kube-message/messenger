@@ -10,14 +10,15 @@ app = falcon.API()
 """
 Messages URL"s
 """
-app.add_route("/message", api.MessageListResource())
-app.add_route("/message/{message_id}", api.MessageDetailResource())
+app.add_route("/messages", api.MessageListResource())
+app.add_route("/messages/{message_id}", api.MessageDetailResource())
 
 """
 Thread URL"s
 """
-app.add_route("/thread", api.ThreadListResource())
-app.add_route("/thread/{thread_id}/message", api.ThreadMessageListResource())
+app.add_route("/threads", api.ThreadListResource())
+app.add_route("/threads/users/{user_id}", api.ThreadUserListResource())
+app.add_route("/threads/{thread_id}/messages", api.ThreadMessageListResource())
 
 """
 Health Check

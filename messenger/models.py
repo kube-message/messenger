@@ -23,12 +23,15 @@ class Thread(Base):
 
 
 class Message(Base):
+    """
+    Object model for a message. Messages are attached to a thread via a FK. All participants of a thread recive the
+    message.
+    """
     __tablename__ = "message"
     pk = Column(Integer, primary_key=True)
     thread_id = Column(Integer, ForeignKey("thread.pk"))
     text = Column(String(500), nullable=False)
     sender_id = Column(Integer)
-    recipient_id = Column(Integer)
 
 
 engine = create_engine('postgresql+psycopg2://admin:admin@db:5432/messenger')
