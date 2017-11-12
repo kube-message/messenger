@@ -3,9 +3,10 @@ from wsgiref import simple_server
 import falcon
 
 import api
+from .middleware import ResponseLoggerMiddleware
 
 
-app = falcon.API()
+app = falcon.API(middleware=[ResponseLoggerMiddleware()])
 
 """
 Messages URL"s

@@ -1,8 +1,13 @@
 import falcon
 import json
 
-from services import messages, threads
-from serializers import ModelSerializer
+from .integration import alerts
+from .services import messages, threads
+from .serializers import ModelSerializer
+from .utils import get_logger
+
+
+logger = get_logger()
 
 
 class HealthCheckResource(object):
@@ -12,10 +17,28 @@ class HealthCheckResource(object):
         response.data = json.dumps({"status": "OK"})
 
 
+def get_data_from_request(request):
+    """
+    Deserializes the JSON in the request body and returns the result
+
+    Args:
+        request (falcon.Request)
+
+    Returns:
+        [dict, list]: The deserialized JSON. If nothing can be read returns an empty dict
+    """
+    data = {}
+    try:
+        data = json.loads(request.stream.read())
+    except ValueError as err:
+        logger.warn("error parsing JSON: %s", err)
+    return data
+
+
 class ThreadListResource(object):
     @staticmethod
     def on_post(request, response):
-        data = json.loads(request.stream.read())
+        data = get_data_from_request(request)
         participants = data.get("participants")
         if not participants:
             response.status = falcon.HTTP_BAD_REQUEST
@@ -30,7 +53,9 @@ class ThreadMessageListResource(object):
     @staticmethod
     def on_get(request, response, thread_id):
         message_objects = messages.get_messages_for_thread(thread_id)
-        response.data = json.dumps({m.pk: m.text for m in message_objects})
+        response.data = json.dumps(
+            [ModelSerializer(m, ["sender_id", "text", "thread_id"]).build_response() for m in message_objects]
+        )
         response.status = falcon.HTTP_200
 
 
@@ -45,7 +70,7 @@ class ThreadUserListResource(object):
 class MessageListResource(object):
     @staticmethod
     def on_post(request, response):
-        data = json.loads(request.stream.read())
+        data = get_data_from_request(request)
         try:
             thread_id, sender_id, text = data["thread_id"], data["sender_id"], data["text"]
         except KeyError as err:
@@ -57,6 +82,7 @@ class MessageListResource(object):
             message = messages.send_message(thread_id, sender_id, text)
             response.status = falcon.HTTP_201
             serializer = ModelSerializer(message, ['text', 'thread_id'])
+            alerts.send_alerts_for_thread_participants(thread_id)
             response.data = json.dumps(serializer.build_response())
         else:
             response.status = falcon.HTTP_400
@@ -75,7 +101,7 @@ class MessageDetailResource(object):
             message_id (int): a message ID
 
         Returns:
-            (response)
+            falcon.Response
         """
         message = messages.get_message_by_id(message_id)
         if message is None:

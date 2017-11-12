@@ -1,16 +1,40 @@
 version: "3"
 services:
   messenger:
-    image: imauld/messenger:app-0.1.0
+    image: imauld/messenger:app-0.1.4
     ports:
       - "8080:8080"
     command: "/venv/bin/gunicorn -c app/config.py app.server:app"
+    environment:
+      - "ALERTS_SERVICE_HOST=alerts"
+      - "ALERTS_SERVICE_PORT=8081"
     links:
-      - db
-  db:
-    image: msgpostgres:0.1.0
+      - msgpostgres
+  msgpostgres:
+    image: imauld/msgpostgres:0.1.0
     volumes:
       - db-data:/var/lib/postgresql/data
-volumes:
+    ports:
+      - "5432:5432"
+  alerts:
+    image: imauld/alerts:app-0.1.2
+    ports:
+      - "8081:8081"
+    command: "./alerts-svc"
+    links:
+      - localstack
+    environment:
+      - "AWS_ACCESS_KEY_ID=foo"
+      - "AWS_SECRET_ACCESS_KEY=bar"
+  localstack:
+    image: atlassianlabs/localstack:0.4.3
+    ports:
+      - "4567-4581:4567-4581"
+    environment:
+      - "DATA_DIR=/tmp/localstack-alerts/data"
+    volumes:
+      - "localstack_data:/tmp/localstack-alerts"
+volumes: 
   db-data:
+  localstack_data:
 

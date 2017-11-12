@@ -34,7 +34,7 @@ class Message(Base):
     sender_id = Column(Integer)
 
 
-engine = create_engine('postgresql+psycopg2://admin:admin@db:5432/messenger')
+engine = create_engine('postgresql+psycopg2://admin:admin@msgpostgres:5432/messenger')
 Base.metadata.create_all(engine)
 DBSession = sessionmaker(bind=engine)
 session = DBSession()

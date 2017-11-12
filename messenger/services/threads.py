@@ -1,19 +1,34 @@
 from ..models import session, Thread
+from ..utils import get_logger
+
+
+logger = get_logger()
 
 
 def get_thread_by_id(thread_id):
-    return session.query(Thread).get(thread_id)
+    try:
+        return session.query(Thread).get(thread_id)
+    except Exception as err:
+        logger.error("error fetching thread:%s: %s", thread_id, err)
 
 
 def get_threads_for_user(user_id):
-    return session.query(Thread).filter(Thread.participants.any(user_id)).all()
+    try:
+        return session.query(Thread).filter(Thread.participants.any(user_id)).all()
+    except Exception as err:
+        logger.error("error fetching threads for user: %s: %s", user_id, err)
+
+
+def get_thread_participant_ids(thread_id):
+    particiapnts = []
+    thread = get_thread_by_id(thread_id)
+    if thread:
+        particiapnts = thread.participants
+    return particiapnts
 
 
 def is_user_in_thread(user_id, thread_id):
-    thread = session.query(Thread).get(thread_id)
-    if thread:
-        return user_id in thread.participants
-    return False
+    return user_id in get_thread_participant_ids(thread_id)
 
 
 def create_thread(participants):
@@ -23,4 +38,4 @@ def create_thread(participants):
         session.commit()
         return thread
     except Exception as err:
-        print("error creating thread: %s" % err)
+        logger.error("error creating thread: %s", err)

@@ -1,12 +1,24 @@
 from ..models import session, Message
+from ..utils import get_logger
+
+
+logger = get_logger()
 
 
 def get_message_by_id(message_id):
-    return session.query(Message).get(message_id)
+    try:
+        return session.query(Message).get(message_id)
+    except Exception as err:
+        logger.error("error fetching message: %s", err)
+        return None
 
 
 def get_messages_for_thread(thread_id):
-    return session.query(Message).filter_by(thread_id=thread_id)
+    try:
+        return session.query(Message).filter_by(thread_id=thread_id)
+    except Exception as err:
+        logger.error("error fetching messages for thread: %s", err)
+        return None
 
 
 def send_message(thread_id, sender_id, text):
@@ -16,4 +28,5 @@ def send_message(thread_id, sender_id, text):
         session.commit()
         return message
     except Exception as err:
-        print("error sending message: %s" % err)
+        logger.error("error saving message: %s", err)
+        return None
