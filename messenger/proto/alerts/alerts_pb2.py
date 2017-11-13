@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='alerts.proto',
   package='alerts',
   syntax='proto3',
-  serialized_pb=_b('\n\x0c\x61lerts.proto\x12\x06\x61lerts\"I\n\nAlertError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12*\n\nerror_code\x18\x02 \x01(\x0e\x32\x16.alerts.AlertErrorCode\"\x92\x01\n\x05\x41lert\x12\x14\n\x0crecipient_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\x12\x11\n\tthread_id\x18\x03 \x01(\x03\x12\x0f\n\x07message\x18\x04 \x01(\t\x12\x11\n\ttimestamp\x18\x05 \x01(\t\x12\x13\n\x0b\x61\x63tion_path\x18\x06 \x01(\t\x12\x0b\n\x03ttl\x18\x07 \x01(\x02\x12\x0c\n\x04seen\x18\x08 \x01(\x08\"*\n\x17GetAlertsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"\\\n\x18GetAlertsForUserResponse\x12\x1d\n\x06\x61lerts\x18\x01 \x03(\x0b\x32\r.alerts.Alert\x12!\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x12.alerts.AlertError\"5\n\x14MarkAlertSeenRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\":\n\x15MarkAlertSeenResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError\"0\n\x10SendAlertRequest\x12\x1c\n\x05\x61lert\x18\x01 \x01(\x0b\x32\r.alerts.Alert\"6\n\x11SendAlertResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError*B\n\x0e\x41lertErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xf5\x01\n\x06\x41lerts\x12W\n\x10GetAlertsForUser\x12\x1f.alerts.GetAlertsForUserRequest\x1a .alerts.GetAlertsForUserResponse\"\x00\x12N\n\rMarkAlertSeen\x12\x1c.alerts.MarkAlertSeenRequest\x1a\x1d.alerts.MarkAlertSeenResponse\"\x00\x12\x42\n\tSendAlert\x12\x18.alerts.SendAlertRequest\x1a\x19.alerts.SendAlertResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x61lerts.proto\x12\x06\x61lerts\"I\n\nAlertError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12*\n\nerror_code\x18\x02 \x01(\x0e\x32\x16.alerts.AlertErrorCode\"\x92\x01\n\x05\x41lert\x12\x14\n\x0crecipient_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\x12\x11\n\tthread_id\x18\x03 \x01(\x03\x12\x0f\n\x07message\x18\x04 \x01(\t\x12\x11\n\ttimestamp\x18\x05 \x01(\x03\x12\x13\n\x0b\x61\x63tion_path\x18\x06 \x01(\t\x12\x0b\n\x03ttl\x18\x07 \x01(\x03\x12\x0c\n\x04seen\x18\x08 \x01(\x08\"*\n\x17GetAlertsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"\\\n\x18GetAlertsForUserResponse\x12\x1d\n\x06\x61lerts\x18\x01 \x03(\x0b\x32\r.alerts.Alert\x12!\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x12.alerts.AlertError\"5\n\x14MarkAlertSeenRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\":\n\x15MarkAlertSeenResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError\"0\n\x10SendAlertRequest\x12\x1c\n\x05\x61lert\x18\x01 \x01(\x0b\x32\r.alerts.Alert\"6\n\x11SendAlertResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError*B\n\x0e\x41lertErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xf5\x01\n\x06\x41lerts\x12W\n\x10GetAlertsForUser\x12\x1f.alerts.GetAlertsForUserRequest\x1a .alerts.GetAlertsForUserResponse\"\x00\x12N\n\rMarkAlertSeen\x12\x1c.alerts.MarkAlertSeenRequest\x1a\x1d.alerts.MarkAlertSeenResponse\"\x00\x12\x42\n\tSendAlert\x12\x18.alerts.SendAlertRequest\x1a\x19.alerts.SendAlertResponse\"\x00\x62\x06proto3')
 )
 
 _ALERTERRORCODE = _descriptor.EnumDescriptor(
@@ -131,8 +131,8 @@ _ALERT = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='timestamp', full_name='alerts.Alert.timestamp', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      number=5, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -145,8 +145,8 @@ _ALERT = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='ttl', full_name='alerts.Alert.ttl', index=6,
-      number=7, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=float(0),
+      number=7, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),

@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: messenger
-        image:  imauld/messenger:app-0.1.3
+        image:  imauld/messenger:app-0.1.4
         imagePullPolicy: IfNotPresent
         command: 
           - "./venv/bin/gunicorn"

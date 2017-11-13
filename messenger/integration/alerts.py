@@ -20,10 +20,8 @@ def get_alerts_addr():
 
 
 def _get_alerts_client():
-    global _client
-    if _client is None:
-        channel = grpc.insecure_channel(get_alerts_addr())
-        _client = alerts.AlertsStub(channel)
+    channel = grpc.insecure_channel(get_alerts_addr())
+    _client = alerts.AlertsStub(channel)
     return _client
 
 
@@ -34,7 +32,7 @@ def send_alert_for_message(recipient_id, thread_id):
             recipient_id=recipient_id,
             thread_id=thread_id,
             message="New message",
-            timestamp=str(int(time())),
+            timestamp=int(time()),
             action_path="/threads/{}/messages".format(thread_id)
         )
         request = alerts.SendAlertRequest(alert=alert)
@@ -43,7 +41,11 @@ def send_alert_for_message(recipient_id, thread_id):
         return response
     except Exception as err:
         logger.error("error calling alerts service: %s", err)
-        return alerts.SendAlertResponse(error=alerts.AlertError(message="error sending alert: %s" % err))
+        error = alerts.AlertError(
+            message="error sending alert: %s" % err,
+            error_code=alerts.AlertErrorCode.Value("SERVER_ERROR")
+        )
+        return alerts.SendAlertResponse(error=error)
 
 
 def send_alerts_for_thread_participants(thread_id):

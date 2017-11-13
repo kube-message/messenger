@@ -58,6 +58,35 @@ class ThreadMessageListResource(object):
         )
         response.status = falcon.HTTP_200
 
+    @staticmethod
+    def on_post(request, response, thread_id):
+        data = get_data_from_request(request)
+        try:
+            sender_id, text = data["sender_id"], data["text"]
+        except KeyError as err:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: %s" % err})
+            return
+
+        if threads.is_user_in_thread(sender_id, thread_id):
+            message = messages.send_message(thread_id, sender_id, text)
+            response.status = falcon.HTTP_201
+            serializer = ModelSerializer(message, ['text', 'thread_id'])
+            alerts.send_alerts_for_thread_participants(thread_id)
+            response.data = json.dumps(serializer.build_response())
+        else:
+            response.status = falcon.HTTP_400
+            response.data = json.dumps({"error": "error sending message: sender not in thread"})
+            return
+
+
+class ThreadDetailResource(object):
+    @staticmethod
+    def on_get(request, response, thread_id):
+        thread = threads.get_thread_by_id(thread_id)
+        response.data = json.dumps(ModelSerializer(thread, ["participants"]).build_response())
+        response.status = falcon.HTTP_200
+
 
 class ThreadUserListResource(object):
     @staticmethod

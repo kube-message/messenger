@@ -18,6 +18,7 @@ app.add_route("/messages/{message_id}", api.MessageDetailResource())
 Thread URL"s
 """
 app.add_route("/threads", api.ThreadListResource())
+app.add_route("/threads/{thread_id}", api.ThreadDetailResource())
 app.add_route("/threads/users/{user_id}", api.ThreadUserListResource())
 app.add_route("/threads/{thread_id}/messages", api.ThreadMessageListResource())
 
