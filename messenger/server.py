@@ -1,33 +1,28 @@
-from wsgiref import simple_server
+from __future__ import absolute_import
 
-import falcon
+from concurrent import futures
+import time
 
-import api
-from .middleware import ResponseLoggerMiddleware
+import grpc
+
+from proto import messenger
+from messenger_svc import MessengerService
 
 
-app = falcon.API(middleware=[ResponseLoggerMiddleware()])
+_ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
-"""
-Messages URL"s
-"""
-app.add_route("/messages", api.MessageListResource())
-app.add_route("/messages/{message_id}", api.MessageDetailResource())
 
-"""
-Thread URL"s
-"""
-app.add_route("/threads", api.ThreadListResource())
-app.add_route("/threads/{thread_id}", api.ThreadDetailResource())
-app.add_route("/threads/users/{user_id}", api.ThreadUserListResource())
-app.add_route("/threads/{thread_id}/messages", api.ThreadMessageListResource())
-
-"""
-Health Check
-"""
-app.add_route("/shc", api.HealthCheckResource())
+def serve():
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    messenger.add_MessengerServicer_to_server(MessengerService(), server)
+    server.add_insecure_port("[::]:8081")
+    server.start()
+    try:
+        while True:
+            time.sleep(_ONE_DAY_IN_SECONDS)
+    except KeyboardInterrupt:
+        server.stop(0)
 
 
 if __name__ == "__main__":
-    httpd = simple_server.make_server("0.0.0.0", 8080, app)
-    httpd.serve_forever()
+    serve()

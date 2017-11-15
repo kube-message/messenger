@@ -1,8 +1,17 @@
 from ..models import session, Thread
+from ..proto import messenger
 from ..utils import get_logger
 
 
 logger = get_logger()
+
+
+def to_proto(thread):
+    return messenger.Thread(participants=thread.participants)
+
+
+def from_proto(thread_proto):
+    return Thread(participants=thread_proto.participants)
 
 
 def get_thread_by_id(thread_id):

@@ -1,8 +1,27 @@
 from ..models import session, Message
+from ..proto import messenger
 from ..utils import get_logger
 
 
 logger = get_logger()
+
+
+def to_proto(message):
+    return messenger.Message(
+        id=message.pk,
+        sender_id=message.sender_id,
+        thread_id=message.thread_id,
+        text=message.text,
+    )
+
+
+def from_proto(message_proto):
+    return Message(
+        pk=message_proto.id,
+        sender_id=message_proto.sender_id,
+        thread_id=message_proto.thread_id,
+        text=message_proto.text,
+    )
 
 
 def get_message_by_id(message_id):

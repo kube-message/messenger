@@ -37,7 +37,8 @@ def send_alert_for_message(recipient_id, thread_id):
         )
         request = alerts.SendAlertRequest(alert=alert)
         logger.info("Sending alert for user:%s on thread:%s", recipient_id, thread_id)
-        response = client.SendAlert(request)
+        ctx = {"caller": "messenger"}
+        response = client.SendAlert(request, ctx)
         return response
     except Exception as err:
         logger.error("error calling alerts service: %s", err)
