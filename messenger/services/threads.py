@@ -1,13 +1,13 @@
-from ..models import session, Thread
-from ..proto import messenger
-from ..utils import get_logger
+from models import session, Thread
+from proto import messenger
+from utils import get_logger
 
 
 logger = get_logger()
 
 
 def to_proto(thread):
-    return messenger.Thread(participants=thread.participants)
+    return messenger.Thread(id=thread.pk, participants=thread.participants)
 
 
 def from_proto(thread_proto):

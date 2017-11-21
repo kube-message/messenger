@@ -25,17 +25,14 @@ spec:
     spec:
       containers:
       - name: messenger
-        image:  imauld/messenger:app-0.1.4
+        image:  imauld/messenger:app-0.2.3
         imagePullPolicy: IfNotPresent
         command: 
-          - "./venv/bin/gunicorn"
+          - "./venv/bin/python"
         args:
-          - app.server:app
+          - app/server.py
         ports:
-          - containerPort: 8080
-        env:
-          - name: GUNICORN_CMD_ARGS
-            value: "--bind=0.0.0.0:8080"
+          - containerPort: 8081
       dnsPolicy: ClusterFirst
       restartPolicy: Always
 ---
@@ -45,9 +42,9 @@ metadata:
   name: messenger
 spec:
   ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
+    - name: grpc
+      port: 8081
+      targetPort: 8081
   selector:
     app: messenger
   type: NodePort

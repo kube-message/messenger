@@ -1,10 +1,10 @@
 version: "3"
 services:
   messenger:
-    image: imauld/messenger:app-0.1.4
+    image: imauld/messenger:app-0.2.0
     ports:
-      - "8080:8080"
-    command: "/venv/bin/gunicorn -c app/config.py app.server:app"
+      - "8080:8081"
+    command: "/venv/bin/python app/server.py"
     environment:
       - "ALERTS_SERVICE_HOST=alerts"
       - "ALERTS_SERVICE_PORT=8081"
@@ -34,6 +34,11 @@ services:
       - "DATA_DIR=/tmp/localstack-alerts/data"
     volumes:
       - "localstack_data:/tmp/localstack-alerts"
+  push-server:
+    command: "/usr/local/nginx/sbin/nginx -c /nginx.conf"
+    image: imauld/push:app-0.1.0
+    ports:
+     - "9080:9080"
 volumes: 
   db-data:
   localstack_data:

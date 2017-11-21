@@ -1,6 +1,6 @@
-from ..models import session, Message
-from ..proto import messenger
-from ..utils import get_logger
+from models import session, Message
+from proto import messenger
+from utils import get_logger
 
 
 logger = get_logger()

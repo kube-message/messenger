@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='messenger.proto',
   package='messenger',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticiapnts\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticiapnts\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xd8\x03\n\tMessenger\x12Q\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1e.messenger.CreateThreadRequest\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticipants\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticipants\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xd9\x03\n\tMessenger\x12R\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1f.messenger.CreateThreadResponse\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x62\x06proto3')
 )
 
 _MESSENGERERRORCODE = _descriptor.EnumDescriptor(
@@ -161,7 +161,7 @@ _THREAD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='particiapnts', full_name='messenger.Thread.particiapnts', index=1,
+      name='participants', full_name='messenger.Thread.participants', index=1,
       number=2, type=4, cpp_type=4, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -192,7 +192,7 @@ _CREATETHREADREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='particiapnts', full_name='messenger.CreateThreadRequest.particiapnts', index=0,
+      name='participants', full_name='messenger.CreateThreadRequest.participants', index=0,
       number=1, type=4, cpp_type=4, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -648,7 +648,7 @@ _MESSENGER = _descriptor.ServiceDescriptor(
   index=0,
   options=None,
   serialized_start=1030,
-  serialized_end=1502,
+  serialized_end=1503,
   methods=[
   _descriptor.MethodDescriptor(
     name='create_thread',
@@ -656,7 +656,7 @@ _MESSENGER = _descriptor.ServiceDescriptor(
     index=0,
     containing_service=None,
     input_type=_CREATETHREADREQUEST,
-    output_type=_CREATETHREADREQUEST,
+    output_type=_CREATETHREADRESPONSE,
     options=None,
   ),
   _descriptor.MethodDescriptor(

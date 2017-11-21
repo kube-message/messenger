@@ -17,7 +17,7 @@ class MessengerStub(object):
     self.create_thread = channel.unary_unary(
         '/messenger.Messenger/create_thread',
         request_serializer=messenger__pb2.CreateThreadRequest.SerializeToString,
-        response_deserializer=messenger__pb2.CreateThreadRequest.FromString,
+        response_deserializer=messenger__pb2.CreateThreadResponse.FromString,
         )
     self.send_message = channel.unary_unary(
         '/messenger.Messenger/send_message',
@@ -86,7 +86,7 @@ def add_MessengerServicer_to_server(servicer, server):
       'create_thread': grpc.unary_unary_rpc_method_handler(
           servicer.create_thread,
           request_deserializer=messenger__pb2.CreateThreadRequest.FromString,
-          response_serializer=messenger__pb2.CreateThreadRequest.SerializeToString,
+          response_serializer=messenger__pb2.CreateThreadResponse.SerializeToString,
       ),
       'send_message': grpc.unary_unary_rpc_method_handler(
           servicer.send_message,
