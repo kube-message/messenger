@@ -1,8 +1,9 @@
-FROM python:2.7
+FROM python:3.6
 MAINTAINER Ian Auld <imauld@gmail.com>
 
 RUN mkdir /app
 COPY requirements.txt /app/requirements.txt
-RUN virtualenv /venv && \ 
+RUN python -m pip install --upgrade pip && \
+    python -m venv /venv && \ 
     /venv/bin/pip install -r /app/requirements.txt
 
