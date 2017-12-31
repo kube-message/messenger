@@ -1,4 +1,4 @@
-# falcon-message
+# messenger
 
 ##Description
-A toy messaging service built using the [gRPC](http://grpc.io).
+A [gRPC](http://grpc.io) based messenging service.
