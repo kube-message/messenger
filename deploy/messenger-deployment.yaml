@@ -47,4 +47,4 @@ spec:
       targetPort: 8081
   selector:
     app: messenger
-  type: NodePort
+  type: LoadBalancer

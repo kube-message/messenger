@@ -1,13 +1,15 @@
 version: "3"
 services:
   messenger:
-    image: imauld/messenger:app-0.2.0
+    image: imauld/messenger:app-0.2.1
     ports:
       - "8080:8081"
     command: "/venv/bin/python app/server.py"
     environment:
       - "ALERTS_SERVICE_HOST=alerts"
       - "ALERTS_SERVICE_PORT=8081"
+      - "PUSH_SERVICE_HOST=push"
+      - "PUSH_SERVICE_PORT=8080"
     links:
       - msgpostgres
   msgpostgres:

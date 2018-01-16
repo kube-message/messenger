@@ -1,4 +1,4 @@
-from messenger_pb2 import (
+from .messenger_pb2 import (
     Message,
     Thread,
     MessengerError,
@@ -14,4 +14,4 @@ from messenger_pb2 import (
     GetThreadsForUserRequest,
     GetThreadsForUserResponse,
 )
-from messenger_pb2_grpc import MessengerServicer, add_MessengerServicer_to_server, MessengerStub
+from .messenger_pb2_grpc import MessengerServicer, add_MessengerServicer_to_server, MessengerStub

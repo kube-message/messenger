@@ -47,6 +47,9 @@ class MessengerService(messenger.MessengerServicer):
         message_pb = request.message
         message = messages.send_message(message_pb.thread_id, message_pb.sender_id, message_pb.text)
         response = messenger.SendMessageResponse(message=messages.to_proto(message))
-        requests.post(PUSH_URL, data=json.dumps({"userId": message.sender_id, "message": message.text}))
+        try:
+            requests.post(PUSH_URL, data=json.dumps({"userId": message.sender_id, "message": message.text}))
+        except Exception:
+            pass
         log_request(context)
         return response
