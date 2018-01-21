@@ -1,3 +1,3 @@
-falcon/
+venv/
 *.db
-
+.idea/

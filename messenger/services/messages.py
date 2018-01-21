@@ -1,6 +1,6 @@
-from models import session, Message
-from proto import messenger
-from utils import get_logger
+from ..models import session, Message
+from ..proto import messenger
+from ..utils import get_logger
 
 
 logger = get_logger()
@@ -25,6 +25,15 @@ def from_proto(message_proto):
 
 
 def get_message_by_id(message_id):
+    """
+    Get a single message by it's id.
+
+    Args:
+        message_id (int, long): The ID of the message.
+
+    Returns:
+        Message
+    """
     try:
         return session.query(Message).get(message_id)
     except Exception as err:

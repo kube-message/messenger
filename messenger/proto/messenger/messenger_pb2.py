@@ -20,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='messenger.proto',
   package='messenger',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticipants\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticipants\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xd9\x03\n\tMessenger\x12R\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1f.messenger.CreateThreadResponse\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fmessenger.proto\x12\tmessenger\"T\n\x0eMessengerError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x31\n\nerror_code\x18\x02 \x01(\x0e\x32\x1d.messenger.MessengerErrorCode\"I\n\x07Message\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x11\n\tthread_id\x18\x02 \x01(\x04\x12\x11\n\tsender_id\x18\x03 \x01(\x04\x12\x0c\n\x04text\x18\x04 \x01(\t\"*\n\x06Thread\x12\n\n\x02id\x18\x01 \x01(\x04\x12\x14\n\x0cparticipants\x18\x02 \x03(\x04\"+\n\x13\x43reateThreadRequest\x12\x14\n\x0cparticipants\x18\x01 \x03(\x04\"c\n\x14\x43reateThreadResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"9\n\x12SendMessageRequest\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\"d\n\x13SendMessageResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"+\n\x16GetThreadDetailRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"f\n\x17GetThreadDetailResponse\x12!\n\x06thread\x18\x01 \x01(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x18GetThreadMessagesRequest\x12\x11\n\tthread_id\x18\x01 \x01(\x04\"A\n\x19GetThreadMessagesResponse\x12$\n\x08messages\x18\x01 \x03(\x0b\x32\x12.messenger.Message\"+\n\x18GetThreadsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x04\"i\n\x19GetThreadsForUserResponse\x12\"\n\x07threads\x18\x01 \x03(\x0b\x32\x11.messenger.Thread\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError\"-\n\x17GetMessageDetailRequest\x12\x12\n\nmessage_id\x18\x01 \x01(\x04\"i\n\x18GetMessageDetailResponse\x12#\n\x07message\x18\x01 \x01(\x0b\x32\x12.messenger.Message\x12(\n\x05\x65rror\x18\x02 \x01(\x0b\x32\x19.messenger.MessengerError*F\n\x12MessengerErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xba\x04\n\tMessenger\x12R\n\rcreate_thread\x12\x1e.messenger.CreateThreadRequest\x1a\x1f.messenger.CreateThreadResponse\"\x00\x12O\n\x0csend_message\x12\x1d.messenger.SendMessageRequest\x1a\x1e.messenger.SendMessageResponse\"\x00\x12^\n\x11get_thread_detail\x12#.messenger.GetThreadMessagesRequest\x1a\".messenger.GetThreadDetailResponse\"\x00\x12\x62\n\x13get_thread_messages\x12#.messenger.GetThreadMessagesRequest\x1a$.messenger.GetThreadMessagesResponse\"\x00\x12\x63\n\x14get_threads_for_user\x12#.messenger.GetThreadsForUserRequest\x1a$.messenger.GetThreadsForUserResponse\"\x00\x12_\n\x12get_message_detail\x12\".messenger.GetMessageDetailRequest\x1a#.messenger.GetMessageDetailResponse\"\x00\x62\x06proto3')
 )
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _MESSENGERERRORCODE = _descriptor.EnumDescriptor(
   name='MessengerErrorCode',
@@ -44,8 +45,8 @@ _MESSENGERERRORCODE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=957,
-  serialized_end=1027,
+  serialized_start=1111,
+  serialized_end=1181,
 )
 _sym_db.RegisterEnumDescriptor(_MESSENGERERRORCODE)
 
@@ -521,6 +522,75 @@ _GETTHREADSFORUSERRESPONSE = _descriptor.Descriptor(
   serialized_end=955,
 )
 
+
+_GETMESSAGEDETAILREQUEST = _descriptor.Descriptor(
+  name='GetMessageDetailRequest',
+  full_name='messenger.GetMessageDetailRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message_id', full_name='messenger.GetMessageDetailRequest.message_id', index=0,
+      number=1, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=957,
+  serialized_end=1002,
+)
+
+
+_GETMESSAGEDETAILRESPONSE = _descriptor.Descriptor(
+  name='GetMessageDetailResponse',
+  full_name='messenger.GetMessageDetailResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='messenger.GetMessageDetailResponse.message', index=0,
+      number=1, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='error', full_name='messenger.GetMessageDetailResponse.error', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1004,
+  serialized_end=1109,
+)
+
 _MESSENGERERROR.fields_by_name['error_code'].enum_type = _MESSENGERERRORCODE
 _CREATETHREADRESPONSE.fields_by_name['thread'].message_type = _THREAD
 _CREATETHREADRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
@@ -532,6 +602,8 @@ _GETTHREADDETAILRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
 _GETTHREADMESSAGESRESPONSE.fields_by_name['messages'].message_type = _MESSAGE
 _GETTHREADSFORUSERRESPONSE.fields_by_name['threads'].message_type = _THREAD
 _GETTHREADSFORUSERRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
+_GETMESSAGEDETAILRESPONSE.fields_by_name['message'].message_type = _MESSAGE
+_GETMESSAGEDETAILRESPONSE.fields_by_name['error'].message_type = _MESSENGERERROR
 DESCRIPTOR.message_types_by_name['MessengerError'] = _MESSENGERERROR
 DESCRIPTOR.message_types_by_name['Message'] = _MESSAGE
 DESCRIPTOR.message_types_by_name['Thread'] = _THREAD
@@ -545,8 +617,9 @@ DESCRIPTOR.message_types_by_name['GetThreadMessagesRequest'] = _GETTHREADMESSAGE
 DESCRIPTOR.message_types_by_name['GetThreadMessagesResponse'] = _GETTHREADMESSAGESRESPONSE
 DESCRIPTOR.message_types_by_name['GetThreadsForUserRequest'] = _GETTHREADSFORUSERREQUEST
 DESCRIPTOR.message_types_by_name['GetThreadsForUserResponse'] = _GETTHREADSFORUSERRESPONSE
+DESCRIPTOR.message_types_by_name['GetMessageDetailRequest'] = _GETMESSAGEDETAILREQUEST
+DESCRIPTOR.message_types_by_name['GetMessageDetailResponse'] = _GETMESSAGEDETAILRESPONSE
 DESCRIPTOR.enum_types_by_name['MessengerErrorCode'] = _MESSENGERERRORCODE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 MessengerError = _reflection.GeneratedProtocolMessageType('MessengerError', (_message.Message,), dict(
   DESCRIPTOR = _MESSENGERERROR,
@@ -639,65 +712,254 @@ GetThreadsForUserResponse = _reflection.GeneratedProtocolMessageType('GetThreads
   ))
 _sym_db.RegisterMessage(GetThreadsForUserResponse)
 
+GetMessageDetailRequest = _reflection.GeneratedProtocolMessageType('GetMessageDetailRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETMESSAGEDETAILREQUEST,
+  __module__ = 'messenger_pb2'
+  # @@protoc_insertion_point(class_scope:messenger.GetMessageDetailRequest)
+  ))
+_sym_db.RegisterMessage(GetMessageDetailRequest)
+
+GetMessageDetailResponse = _reflection.GeneratedProtocolMessageType('GetMessageDetailResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETMESSAGEDETAILRESPONSE,
+  __module__ = 'messenger_pb2'
+  # @@protoc_insertion_point(class_scope:messenger.GetMessageDetailResponse)
+  ))
+_sym_db.RegisterMessage(GetMessageDetailResponse)
 
 
-_MESSENGER = _descriptor.ServiceDescriptor(
-  name='Messenger',
-  full_name='messenger.Messenger',
-  file=DESCRIPTOR,
-  index=0,
-  options=None,
-  serialized_start=1030,
-  serialized_end=1503,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='create_thread',
-    full_name='messenger.Messenger.create_thread',
-    index=0,
-    containing_service=None,
-    input_type=_CREATETHREADREQUEST,
-    output_type=_CREATETHREADRESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='send_message',
-    full_name='messenger.Messenger.send_message',
-    index=1,
-    containing_service=None,
-    input_type=_SENDMESSAGEREQUEST,
-    output_type=_SENDMESSAGERESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='get_thread_detail',
-    full_name='messenger.Messenger.get_thread_detail',
-    index=2,
-    containing_service=None,
-    input_type=_GETTHREADMESSAGESREQUEST,
-    output_type=_GETTHREADDETAILRESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='get_thread_messages',
-    full_name='messenger.Messenger.get_thread_messages',
-    index=3,
-    containing_service=None,
-    input_type=_GETTHREADMESSAGESREQUEST,
-    output_type=_GETTHREADMESSAGESRESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='get_threads_for_user',
-    full_name='messenger.Messenger.get_threads_for_user',
-    index=4,
-    containing_service=None,
-    input_type=_GETTHREADSFORUSERREQUEST,
-    output_type=_GETTHREADSFORUSERRESPONSE,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_MESSENGER)
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
 
-DESCRIPTOR.services_by_name['Messenger'] = _MESSENGER
 
+  class MessengerStub(object):
+
+    def __init__(self, channel):
+      """Constructor.
+
+      Args:
+        channel: A grpc.Channel.
+      """
+      self.create_thread = channel.unary_unary(
+          '/messenger.Messenger/create_thread',
+          request_serializer=CreateThreadRequest.SerializeToString,
+          response_deserializer=CreateThreadResponse.FromString,
+          )
+      self.send_message = channel.unary_unary(
+          '/messenger.Messenger/send_message',
+          request_serializer=SendMessageRequest.SerializeToString,
+          response_deserializer=SendMessageResponse.FromString,
+          )
+      self.get_thread_detail = channel.unary_unary(
+          '/messenger.Messenger/get_thread_detail',
+          request_serializer=GetThreadMessagesRequest.SerializeToString,
+          response_deserializer=GetThreadDetailResponse.FromString,
+          )
+      self.get_thread_messages = channel.unary_unary(
+          '/messenger.Messenger/get_thread_messages',
+          request_serializer=GetThreadMessagesRequest.SerializeToString,
+          response_deserializer=GetThreadMessagesResponse.FromString,
+          )
+      self.get_threads_for_user = channel.unary_unary(
+          '/messenger.Messenger/get_threads_for_user',
+          request_serializer=GetThreadsForUserRequest.SerializeToString,
+          response_deserializer=GetThreadsForUserResponse.FromString,
+          )
+      self.get_message_detail = channel.unary_unary(
+          '/messenger.Messenger/get_message_detail',
+          request_serializer=GetMessageDetailRequest.SerializeToString,
+          response_deserializer=GetMessageDetailResponse.FromString,
+          )
+
+
+  class MessengerServicer(object):
+
+    def create_thread(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def send_message(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def get_thread_detail(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def get_thread_messages(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def get_threads_for_user(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def get_message_detail(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+
+  def add_MessengerServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+        'create_thread': grpc.unary_unary_rpc_method_handler(
+            servicer.create_thread,
+            request_deserializer=CreateThreadRequest.FromString,
+            response_serializer=CreateThreadResponse.SerializeToString,
+        ),
+        'send_message': grpc.unary_unary_rpc_method_handler(
+            servicer.send_message,
+            request_deserializer=SendMessageRequest.FromString,
+            response_serializer=SendMessageResponse.SerializeToString,
+        ),
+        'get_thread_detail': grpc.unary_unary_rpc_method_handler(
+            servicer.get_thread_detail,
+            request_deserializer=GetThreadMessagesRequest.FromString,
+            response_serializer=GetThreadDetailResponse.SerializeToString,
+        ),
+        'get_thread_messages': grpc.unary_unary_rpc_method_handler(
+            servicer.get_thread_messages,
+            request_deserializer=GetThreadMessagesRequest.FromString,
+            response_serializer=GetThreadMessagesResponse.SerializeToString,
+        ),
+        'get_threads_for_user': grpc.unary_unary_rpc_method_handler(
+            servicer.get_threads_for_user,
+            request_deserializer=GetThreadsForUserRequest.FromString,
+            response_serializer=GetThreadsForUserResponse.SerializeToString,
+        ),
+        'get_message_detail': grpc.unary_unary_rpc_method_handler(
+            servicer.get_message_detail,
+            request_deserializer=GetMessageDetailRequest.FromString,
+            response_serializer=GetMessageDetailResponse.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+        'messenger.Messenger', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+  class BetaMessengerServicer(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def create_thread(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def send_message(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def get_thread_detail(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def get_thread_messages(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def get_threads_for_user(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def get_message_detail(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+  class BetaMessengerStub(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def create_thread(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    create_thread.future = None
+    def send_message(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    send_message.future = None
+    def get_thread_detail(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    get_thread_detail.future = None
+    def get_thread_messages(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    get_thread_messages.future = None
+    def get_threads_for_user(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    get_threads_for_user.future = None
+    def get_message_detail(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    get_message_detail.future = None
+
+
+  def beta_create_Messenger_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_deserializers = {
+      ('messenger.Messenger', 'create_thread'): CreateThreadRequest.FromString,
+      ('messenger.Messenger', 'get_message_detail'): GetMessageDetailRequest.FromString,
+      ('messenger.Messenger', 'get_thread_detail'): GetThreadMessagesRequest.FromString,
+      ('messenger.Messenger', 'get_thread_messages'): GetThreadMessagesRequest.FromString,
+      ('messenger.Messenger', 'get_threads_for_user'): GetThreadsForUserRequest.FromString,
+      ('messenger.Messenger', 'send_message'): SendMessageRequest.FromString,
+    }
+    response_serializers = {
+      ('messenger.Messenger', 'create_thread'): CreateThreadResponse.SerializeToString,
+      ('messenger.Messenger', 'get_message_detail'): GetMessageDetailResponse.SerializeToString,
+      ('messenger.Messenger', 'get_thread_detail'): GetThreadDetailResponse.SerializeToString,
+      ('messenger.Messenger', 'get_thread_messages'): GetThreadMessagesResponse.SerializeToString,
+      ('messenger.Messenger', 'get_threads_for_user'): GetThreadsForUserResponse.SerializeToString,
+      ('messenger.Messenger', 'send_message'): SendMessageResponse.SerializeToString,
+    }
+    method_implementations = {
+      ('messenger.Messenger', 'create_thread'): face_utilities.unary_unary_inline(servicer.create_thread),
+      ('messenger.Messenger', 'get_message_detail'): face_utilities.unary_unary_inline(servicer.get_message_detail),
+      ('messenger.Messenger', 'get_thread_detail'): face_utilities.unary_unary_inline(servicer.get_thread_detail),
+      ('messenger.Messenger', 'get_thread_messages'): face_utilities.unary_unary_inline(servicer.get_thread_messages),
+      ('messenger.Messenger', 'get_threads_for_user'): face_utilities.unary_unary_inline(servicer.get_threads_for_user),
+      ('messenger.Messenger', 'send_message'): face_utilities.unary_unary_inline(servicer.send_message),
+    }
+    server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
+    return beta_implementations.server(method_implementations, options=server_options)
+
+
+  def beta_create_Messenger_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_serializers = {
+      ('messenger.Messenger', 'create_thread'): CreateThreadRequest.SerializeToString,
+      ('messenger.Messenger', 'get_message_detail'): GetMessageDetailRequest.SerializeToString,
+      ('messenger.Messenger', 'get_thread_detail'): GetThreadMessagesRequest.SerializeToString,
+      ('messenger.Messenger', 'get_thread_messages'): GetThreadMessagesRequest.SerializeToString,
+      ('messenger.Messenger', 'get_threads_for_user'): GetThreadsForUserRequest.SerializeToString,
+      ('messenger.Messenger', 'send_message'): SendMessageRequest.SerializeToString,
+    }
+    response_deserializers = {
+      ('messenger.Messenger', 'create_thread'): CreateThreadResponse.FromString,
+      ('messenger.Messenger', 'get_message_detail'): GetMessageDetailResponse.FromString,
+      ('messenger.Messenger', 'get_thread_detail'): GetThreadDetailResponse.FromString,
+      ('messenger.Messenger', 'get_thread_messages'): GetThreadMessagesResponse.FromString,
+      ('messenger.Messenger', 'get_threads_for_user'): GetThreadsForUserResponse.FromString,
+      ('messenger.Messenger', 'send_message'): SendMessageResponse.FromString,
+    }
+    cardinalities = {
+      'create_thread': cardinality.Cardinality.UNARY_UNARY,
+      'get_message_detail': cardinality.Cardinality.UNARY_UNARY,
+      'get_thread_detail': cardinality.Cardinality.UNARY_UNARY,
+      'get_thread_messages': cardinality.Cardinality.UNARY_UNARY,
+      'get_threads_for_user': cardinality.Cardinality.UNARY_UNARY,
+      'send_message': cardinality.Cardinality.UNARY_UNARY,
+    }
+    stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
+    return beta_implementations.dynamic_stub(channel, 'messenger.Messenger', cardinalities, options=stub_options)
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)

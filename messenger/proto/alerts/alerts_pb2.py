@@ -20,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='alerts.proto',
   package='alerts',
   syntax='proto3',
-  serialized_pb=_b('\n\x0c\x61lerts.proto\x12\x06\x61lerts\"I\n\nAlertError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12*\n\nerror_code\x18\x02 \x01(\x0e\x32\x16.alerts.AlertErrorCode\"\x92\x01\n\x05\x41lert\x12\x14\n\x0crecipient_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\x12\x11\n\tthread_id\x18\x03 \x01(\x03\x12\x0f\n\x07message\x18\x04 \x01(\t\x12\x11\n\ttimestamp\x18\x05 \x01(\x03\x12\x13\n\x0b\x61\x63tion_path\x18\x06 \x01(\t\x12\x0b\n\x03ttl\x18\x07 \x01(\x03\x12\x0c\n\x04seen\x18\x08 \x01(\x08\"*\n\x17GetAlertsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"\\\n\x18GetAlertsForUserResponse\x12\x1d\n\x06\x61lerts\x18\x01 \x03(\x0b\x32\r.alerts.Alert\x12!\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x12.alerts.AlertError\"5\n\x14MarkAlertSeenRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\":\n\x15MarkAlertSeenResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError\"0\n\x10SendAlertRequest\x12\x1c\n\x05\x61lert\x18\x01 \x01(\x0b\x32\r.alerts.Alert\"6\n\x11SendAlertResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError*B\n\x0e\x41lertErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xf5\x01\n\x06\x41lerts\x12W\n\x10GetAlertsForUser\x12\x1f.alerts.GetAlertsForUserRequest\x1a .alerts.GetAlertsForUserResponse\"\x00\x12N\n\rMarkAlertSeen\x12\x1c.alerts.MarkAlertSeenRequest\x1a\x1d.alerts.MarkAlertSeenResponse\"\x00\x12\x42\n\tSendAlert\x12\x18.alerts.SendAlertRequest\x1a\x19.alerts.SendAlertResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0c\x61lerts.proto\x12\x06\x61lerts\"I\n\nAlertError\x12\x0f\n\x07message\x18\x01 \x01(\t\x12*\n\nerror_code\x18\x02 \x01(\x0e\x32\x16.alerts.AlertErrorCode\"\x92\x01\n\x05\x41lert\x12\x14\n\x0crecipient_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\x12\x11\n\tthread_id\x18\x03 \x01(\x03\x12\x0f\n\x07message\x18\x04 \x01(\t\x12\x11\n\ttimestamp\x18\x05 \x01(\x03\x12\x13\n\x0b\x61\x63tion_path\x18\x06 \x01(\t\x12\x0b\n\x03ttl\x18\x07 \x01(\x03\x12\x0c\n\x04seen\x18\x08 \x01(\x08\"*\n\x17GetAlertsForUserRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\"\\\n\x18GetAlertsForUserResponse\x12\x1d\n\x06\x61lerts\x18\x01 \x03(\x0b\x32\r.alerts.Alert\x12!\n\x05\x65rror\x18\x03 \x01(\x0b\x32\x12.alerts.AlertError\"5\n\x14MarkAlertSeenRequest\x12\x0f\n\x07user_id\x18\x01 \x01(\x03\x12\x0c\n\x04uniq\x18\x02 \x01(\x03\":\n\x15MarkAlertSeenResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError\"0\n\x10SendAlertRequest\x12\x1c\n\x05\x61lert\x18\x01 \x01(\x0b\x32\r.alerts.Alert\"6\n\x11SendAlertResponse\x12!\n\x05\x65rror\x18\x01 \x01(\x0b\x32\x12.alerts.AlertError*B\n\x0e\x41lertErrorCode\x12\r\n\tNOT_FOUND\x10\x00\x12\x10\n\x0cSERVER_ERROR\x10\x01\x12\x0f\n\x0b\x42\x41\x44_REQUEST\x10\x03\x32\xfb\x01\n\x06\x41lerts\x12Z\n\x13get_alerts_for_user\x12\x1f.alerts.GetAlertsForUserRequest\x1a .alerts.GetAlertsForUserResponse\"\x00\x12P\n\x0fmark_alert_seen\x12\x1c.alerts.MarkAlertSeenRequest\x1a\x1d.alerts.MarkAlertSeenResponse\"\x00\x12\x43\n\nsend_alert\x12\x18.alerts.SendAlertRequest\x1a\x19.alerts.SendAlertResponse\"\x00\x62\x06proto3')
 )
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _ALERTERRORCODE = _descriptor.EnumDescriptor(
   name='AlertErrorCode',
@@ -388,7 +389,6 @@ DESCRIPTOR.message_types_by_name['MarkAlertSeenResponse'] = _MARKALERTSEENRESPON
 DESCRIPTOR.message_types_by_name['SendAlertRequest'] = _SENDALERTREQUEST
 DESCRIPTOR.message_types_by_name['SendAlertResponse'] = _SENDALERTRESPONSE
 DESCRIPTOR.enum_types_by_name['AlertErrorCode'] = _ALERTERRORCODE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 AlertError = _reflection.GeneratedProtocolMessageType('AlertError', (_message.Message,), dict(
   DESCRIPTOR = _ALERTERROR,
@@ -447,46 +447,161 @@ SendAlertResponse = _reflection.GeneratedProtocolMessageType('SendAlertResponse'
 _sym_db.RegisterMessage(SendAlertResponse)
 
 
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
 
-_ALERTS = _descriptor.ServiceDescriptor(
-  name='Alerts',
-  full_name='alerts.Alerts',
-  file=DESCRIPTOR,
-  index=0,
-  options=None,
-  serialized_start=676,
-  serialized_end=921,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='GetAlertsForUser',
-    full_name='alerts.Alerts.GetAlertsForUser',
-    index=0,
-    containing_service=None,
-    input_type=_GETALERTSFORUSERREQUEST,
-    output_type=_GETALERTSFORUSERRESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='MarkAlertSeen',
-    full_name='alerts.Alerts.MarkAlertSeen',
-    index=1,
-    containing_service=None,
-    input_type=_MARKALERTSEENREQUEST,
-    output_type=_MARKALERTSEENRESPONSE,
-    options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='SendAlert',
-    full_name='alerts.Alerts.SendAlert',
-    index=2,
-    containing_service=None,
-    input_type=_SENDALERTREQUEST,
-    output_type=_SENDALERTRESPONSE,
-    options=None,
-  ),
-])
-_sym_db.RegisterServiceDescriptor(_ALERTS)
 
-DESCRIPTOR.services_by_name['Alerts'] = _ALERTS
+  class AlertsStub(object):
 
+    def __init__(self, channel):
+      """Constructor.
+
+      Args:
+        channel: A grpc.Channel.
+      """
+      self.get_alerts_for_user = channel.unary_unary(
+          '/alerts.Alerts/get_alerts_for_user',
+          request_serializer=GetAlertsForUserRequest.SerializeToString,
+          response_deserializer=GetAlertsForUserResponse.FromString,
+          )
+      self.mark_alert_seen = channel.unary_unary(
+          '/alerts.Alerts/mark_alert_seen',
+          request_serializer=MarkAlertSeenRequest.SerializeToString,
+          response_deserializer=MarkAlertSeenResponse.FromString,
+          )
+      self.send_alert = channel.unary_unary(
+          '/alerts.Alerts/send_alert',
+          request_serializer=SendAlertRequest.SerializeToString,
+          response_deserializer=SendAlertResponse.FromString,
+          )
+
+
+  class AlertsServicer(object):
+
+    def get_alerts_for_user(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def mark_alert_seen(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def send_alert(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+
+  def add_AlertsServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+        'get_alerts_for_user': grpc.unary_unary_rpc_method_handler(
+            servicer.get_alerts_for_user,
+            request_deserializer=GetAlertsForUserRequest.FromString,
+            response_serializer=GetAlertsForUserResponse.SerializeToString,
+        ),
+        'mark_alert_seen': grpc.unary_unary_rpc_method_handler(
+            servicer.mark_alert_seen,
+            request_deserializer=MarkAlertSeenRequest.FromString,
+            response_serializer=MarkAlertSeenResponse.SerializeToString,
+        ),
+        'send_alert': grpc.unary_unary_rpc_method_handler(
+            servicer.send_alert,
+            request_deserializer=SendAlertRequest.FromString,
+            response_serializer=SendAlertResponse.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+        'alerts.Alerts', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+  class BetaAlertsServicer(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def get_alerts_for_user(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def mark_alert_seen(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def send_alert(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+  class BetaAlertsStub(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def get_alerts_for_user(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    get_alerts_for_user.future = None
+    def mark_alert_seen(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    mark_alert_seen.future = None
+    def send_alert(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    send_alert.future = None
+
+
+  def beta_create_Alerts_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_deserializers = {
+      ('alerts.Alerts', 'get_alerts_for_user'): GetAlertsForUserRequest.FromString,
+      ('alerts.Alerts', 'mark_alert_seen'): MarkAlertSeenRequest.FromString,
+      ('alerts.Alerts', 'send_alert'): SendAlertRequest.FromString,
+    }
+    response_serializers = {
+      ('alerts.Alerts', 'get_alerts_for_user'): GetAlertsForUserResponse.SerializeToString,
+      ('alerts.Alerts', 'mark_alert_seen'): MarkAlertSeenResponse.SerializeToString,
+      ('alerts.Alerts', 'send_alert'): SendAlertResponse.SerializeToString,
+    }
+    method_implementations = {
+      ('alerts.Alerts', 'get_alerts_for_user'): face_utilities.unary_unary_inline(servicer.get_alerts_for_user),
+      ('alerts.Alerts', 'mark_alert_seen'): face_utilities.unary_unary_inline(servicer.mark_alert_seen),
+      ('alerts.Alerts', 'send_alert'): face_utilities.unary_unary_inline(servicer.send_alert),
+    }
+    server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
+    return beta_implementations.server(method_implementations, options=server_options)
+
+
+  def beta_create_Alerts_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_serializers = {
+      ('alerts.Alerts', 'get_alerts_for_user'): GetAlertsForUserRequest.SerializeToString,
+      ('alerts.Alerts', 'mark_alert_seen'): MarkAlertSeenRequest.SerializeToString,
+      ('alerts.Alerts', 'send_alert'): SendAlertRequest.SerializeToString,
+    }
+    response_deserializers = {
+      ('alerts.Alerts', 'get_alerts_for_user'): GetAlertsForUserResponse.FromString,
+      ('alerts.Alerts', 'mark_alert_seen'): MarkAlertSeenResponse.FromString,
+      ('alerts.Alerts', 'send_alert'): SendAlertResponse.FromString,
+    }
+    cardinalities = {
+      'get_alerts_for_user': cardinality.Cardinality.UNARY_UNARY,
+      'mark_alert_seen': cardinality.Cardinality.UNARY_UNARY,
+      'send_alert': cardinality.Cardinality.UNARY_UNARY,
+    }
+    stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
+    return beta_implementations.dynamic_stub(channel, 'alerts.Alerts', cardinalities, options=stub_options)
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)
