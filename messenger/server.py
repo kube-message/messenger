@@ -5,9 +5,9 @@ import time
 
 import grpc
 
-from proto import messenger
-from messenger_svc import MessengerService
-from utils import get_logger
+from messenger.proto import messenger
+from messenger.messenger_svc import MessengerService
+from messenger.utils import get_logger
 
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24

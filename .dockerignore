@@ -1,0 +1,6 @@
+venv/
+docker-compose.yaml
+Dockerfile*
+README.md
+deploy/
+scripts/
